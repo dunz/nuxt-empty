@@ -51,10 +51,10 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component({
-  middleware ({ app }) {
+  middleware () {
     // const localePath = app.localePath('index');
-    console.log(app.localePath({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
-    console.log(app.localeRoute({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
+    // console.log(app.localePath({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
+    // console.log(app.localeRoute({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
     // console.log('app.localeRoute', app.localeRoute());
 
     // const switchLocalePath = app.switchLocalePath('ko');
@@ -67,22 +67,22 @@ export default class Index extends Vue {
   //   app.switchLocalePath('ko');
   // }
   protected mounted () {
-    console.log('mounted', this)
+    // console.log('mounted', this.$i18n);
   }
 }
 </script>
 
 <style>
-  .container {
+.container {
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
+}
 
-  .title {
+.title {
     font-family: 'Quicksand',
     'Source Sans Pro',
     -apple-system,
@@ -97,17 +97,17 @@ export default class Index extends Vue {
     font-size: 100px;
     color: #35495e;
     letter-spacing: 1px;
-  }
+}
 
-  .subtitle {
+.subtitle {
     font-weight: 300;
     font-size: 42px;
     color: #526488;
     word-spacing: 5px;
     padding-bottom: 15px;
-  }
+}
 
-  .links {
+.links {
     padding-top: 15px;
-  }
+}
 </style>

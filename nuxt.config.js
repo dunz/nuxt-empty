@@ -32,7 +32,9 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: [],
+  plugins: [
+    '@/plugins/i18n.ts'
+  ],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -54,21 +56,59 @@ export default {
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     'nuxt-i18n'
+    // ['nuxt-i18n', {
+    //     parsePages: false,
+    //     pages: {
+    //         about: {
+    //             en: '/about',
+    //             ko: '/a-props'
+    //         }
+    //     }
+    // }]
   ],
   i18n: {
-    locales: ['en', 'ko'],
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en.js',
+        name: 'English'
+      },
+      {
+        code: 'ko',
+        iso: 'ko-KR',
+        file: 'ko.js',
+        name: '한국어'
+      }
+    ],
     defaultLocale: 'en',
     strategy: 'prefix',
+    // parsePages: false,
+    // pages: {
+    //     about: {
+    //         en: '/about',
+    //         ko: '/a-props'
+    //     }
+    // },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'LOCALE'
+      // alwaysRedirect: true
+    },
+    // detectBrowserLanguage: false,
+    lazy: true,
+    langDir: 'locales/',
+    vueI18nLoader: true,
     vueI18n: {
-      fallbackLocale: 'en',
-      messages: {
-        en: {
-          greet: 'hello'
-        },
-        ko: {
-          greet: '안녕'
-        }
-      }
+      fallbackLocale: 'en'
+      // messages: {
+      //     en: {
+      //         greet: 'hello'
+      //     },
+      //     ko: {
+      //         greet: '안녕'
+      //     }
+      // }
     }
   },
   /*
