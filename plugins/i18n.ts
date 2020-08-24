@@ -1,12 +1,35 @@
 import {Context} from '@nuxt/types';
-import Vue from 'vue'
+import {ErrorHandler, RawLocation} from 'vue-router/types/router';
+import {isArray} from 'lodash';
 
-export default ({app}: Context, inject: any) => {
-    console.log(process.server, process.client);
-    inject('trans', (key: string, value: any) => {
-        app.i18n.t(key, value);
-    })
-    // inject('trans', (key: VueI18n.Path, values?: VueI18n.Values) => i18nProvider.trans(key, values));
+export type RouterTo = RawLocation | [RawLocation, string];
 
-    // Vue.prototype.$trans = (message: string) => app.i18n.t(message)
+const getToArray = (to: RouterTo): [RawLocation, string] => {
+    return isArray(to) ? [to[0], to[1]] : [to, undefined];
+};
+
+export default ({app: {localePath, i18n, router}}: Context, inject: any) => {
+    inject('routerPush', (to: RouterTo, onComplete?: Function, onAbort?: ErrorHandler): void => {
+        const [location, locale] = getToArray(to);
+        router.push(localePath(location, locale), onComplete, onAbort);
+    });
+
+    inject('routerReplace', (to: RouterTo, onComplete?: Function, onAbort?: ErrorHandler): void => {
+        const [toLocation, toLocale] = getToArray(to);
+        router.replace(localePath(toLocation, toLocale), onComplete, onAbort);
+    });
+};
+
+declare module '@nuxt/types' {
+    interface Context {
+        $routerPush(to: RouterTo, onComplete?: Function, onAbort?: ErrorHandler): void;
+        $routerReplace(to: RouterTo, onComplete?: Function, onAbort?: ErrorHandler): void;
+    }
+}
+
+declare module 'vue/types/vue' {
+    interface Vue {
+        $routerPush(to: RouterTo, onComplete?: Function, onAbort?: ErrorHandler): void;
+        $routerReplace(to: RouterTo, onComplete?: Function, onAbort?: ErrorHandler): void;
+    }
 }

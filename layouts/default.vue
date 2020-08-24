@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <h1>{{ $t('greet') }}</h1>
     <Nuxt />
   </div>
@@ -10,11 +10,14 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class Layout extends Vue {
-  private head () {
-    const i18nSeo = this.$nuxtI18nSeo()
-    // console.log(i18nSeo);
-    return i18nSeo
-  }
+    private head () {
+        const i18nSeo = this.$nuxtI18nSeo()
+        return i18nSeo
+    }
+
+    // private middleware({redirect}: Context) {
+    //   redirect('/ko');
+    // }
 }
 </script>
 

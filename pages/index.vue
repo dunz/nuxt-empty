@@ -17,7 +17,8 @@
       <nuxt-link :to="localeRoute({name:'category-slug', params:{slug: 1}}, 'ko')">
         localeRoute
       </nuxt-link>
-      <a href="#" @click.prevent="$router.push(localeRoute({name:'category-slug', params:{slug: 1}}, 'ko'))">router push</a>
+      <!--      <a href="#" @click.prevent="$routerPush({name:'category-slug', params:{slug: 1}}, 'ko')">router push</a>-->
+      <a href="#" @click.prevent="callRouterPush">router push</a>
 
       <nuxt-link :to="switchLocalePath('en')">
         English
@@ -25,6 +26,9 @@
       <nuxt-link :to="switchLocalePath('ko')">
         Korean
       </nuxt-link>
+      <button id="change-language">
+        Change Language
+      </button>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -51,24 +55,37 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component({
-  middleware () {
-    // const localePath = app.localePath('index');
-    // console.log(app.localePath({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
-    // console.log(app.localeRoute({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
-    // console.log('app.localeRoute', app.localeRoute());
+    middleware () {
+        // const localePath = app.localePath('index');
+        // console.log(app.localePath({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
+        // console.log(app.localeRoute({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
+        // console.log('app.localeRoute', app.localeRoute());
 
-    // const switchLocalePath = app.switchLocalePath('ko');
-    // console.log('switchLocalePath', switchLocalePath)
-    // redirect(switchLocalePath)
-  }
+        // const switchLocalePath = app.switchLocalePath('ko');
+        // console.log('switchLocalePath', switchLocalePath)
+        // redirect(switchLocalePath)
+    }
 })
 export default class Index extends Vue {
-  // protected asyncData({app}) {
-  //   app.switchLocalePath('ko');
-  // }
-  protected mounted () {
-    // console.log('mounted', this.$i18n);
-  }
+    // protected asyncData({app}) {
+    //   app.switchLocalePath('ko');
+    // }
+
+    protected callRouterPush () {
+        // this.$routerPush({name: 'category-slug', params: {slug: 1}}, 'ko');
+
+        // this.$router.push(this.localePath({name: 'category-slug', params: {slug: 1}}, 'ko'), () => {
+        //     console.log('onComplete');
+        // })
+        this.$routerReplace([{ name: 'category-slug', params: { slug: 1 } }, 'ko'], () => {
+            console.log('onComplete')
+        })
+    }
+
+    protected mounted () {
+        // this.$routerPush({name:'category-slug', params:{slug: 1}}, 'ko');
+        // console.log('mounted', this.$i18n);
+    }
 }
 </script>
 
