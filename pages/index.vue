@@ -83,8 +83,6 @@ export default class Index extends Vue {
     }
 
     protected mounted () {
-        // this.$routerPush({name:'category-slug', params:{slug: 1}}, 'ko');
-        // console.log('mounted', this.$i18n);
     }
 }
 </script>

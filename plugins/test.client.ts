@@ -1,4 +1,6 @@
-export default () => {
+import {Context} from '@nuxt/types';
+
+export default (context: Context) => {
     // const button = document.createElement('button');
     // const text = document.createTextNode('asdf');
     // button.append(text);
@@ -12,21 +14,21 @@ export default () => {
     // console.log('redirect plugin');
     // redirect('/en');
 
-    console.log('client plugin 몇번 실행될까?');
+    console.log('client plugin 몇번 실행될까?', context.app.i18n.locale);
     // router.afterEach(() => {
-        // return redirect('/en');
+    // return redirect('/en');
 
-        // console.log(1);
-        // const button = document.createElement('button');
-        // const text = document.createTextNode('asdf11111111');
-        // document.querySelector('.layout').append(button);
-        // console.log(document.querySelector('.layout'));
+    // console.log(1);
+    // const button = document.createElement('button');
+    // const text = document.createTextNode('asdf11111111');
+    // document.querySelector('.layout').append(button);
+    // console.log(document.querySelector('.layout'));
 
-        // const button = document.getElementById('change-language');
-        // button.addEventListener('click', () => {
-        //     // redirect('/en');
-        //     // location.replace('http://localhost:3000/en');
-        // })
+    // const button = document.getElementById('change-language');
+    // button.addEventListener('click', () => {
+    //     // redirect('/en');
+    //     // location.replace('http://localhost:3000/en');
+    // })
     // });
 
     // console.log('test', process.server, process.client, document.querySelector('.layout'));

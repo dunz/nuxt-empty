@@ -10,7 +10,7 @@ export const DEFAULT_LOCALE: string = 'ko';
 
 export const DEFAULT_REGULATION: string = 'KOREA';
 
-export const DEFAULT_COVERAGES: Array<string> = ['en', 'ko'];
+export const DEFAULT_COVERAGES: Array<string> = ['en', 'ko', 'pt'];
 
 export const DEFAULT_COVERAGES_SET = DEFAULT_COVERAGES.map(code => ({
     code,
