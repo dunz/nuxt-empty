@@ -11,6 +11,8 @@ module.exports = {
     plugins: [],
     // add your custom rules here
     rules: {
-        indent: ['error', 4, { SwitchCase: 1, ignoreComments: true }]
+        indent: ['error', 4, {SwitchCase: 1, ignoreComments: true}],
+        semi: ['error', 'always'],
+        'object-curly-spacing': ['error', 'never']
     }
-}
+};

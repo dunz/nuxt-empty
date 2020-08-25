@@ -3,6 +3,7 @@
     "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "strictNullChecks": false,
     "lib": [
       "ESNext",
       "ESNext.AsyncIterable",
@@ -14,6 +15,7 @@
     "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
       "~/*": [

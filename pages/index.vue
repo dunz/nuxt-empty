@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import {Component, Vue} from 'nuxt-property-decorator';
 
 @Component({
     middleware () {
@@ -77,9 +77,9 @@ export default class Index extends Vue {
         // this.$router.push(this.localePath({name: 'category-slug', params: {slug: 1}}, 'ko'), () => {
         //     console.log('onComplete');
         // })
-        this.$routerReplace([{ name: 'category-slug', params: { slug: 1 } }, 'ko'], () => {
-            console.log('onComplete')
-        })
+        this.$routerReplace([{name: 'category-slug', params: {slug: '1'}}, 'ko'], () => {
+            console.log('onComplete');
+        });
     }
 
     protected mounted () {
