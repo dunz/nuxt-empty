@@ -1,89 +1,20 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        nuxt-empty1
-      </h1>
-      <nuxt-link :to="localePath('about', 'ko')">
-        about
-      </nuxt-link>
-      <nuxt-link :to="localePath({name:'about'})">
-        about
-      </nuxt-link>
-      <nuxt-link :to="localePath({name:'category-slug', params:{slug: 1}}, 'ko')">
-        slug
-      </nuxt-link>
-      <nuxt-link :to="localeRoute({name:'category-slug', params:{slug: 1}}, 'ko')">
-        localeRoute
-      </nuxt-link>
-      <!--      <a href="#" @click.prevent="$routerPush({name:'category-slug', params:{slug: 1}}, 'ko')">router push</a>-->
-      <a href="#" @click.prevent="callRouterPush">router push</a>
-
-      <nuxt-link :to="switchLocalePath('en')">
-        English
-      </nuxt-link>
-      <nuxt-link :to="switchLocalePath('ko')">
-        Korean
-      </nuxt-link>
-      <button id="change-language">
-        Change Language
-      </button>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    <div class="container">
+        <div>
+            <Logo />
+            <Navigation />
+        </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'nuxt-property-decorator';
+import Navigation from '~/components/Navigation.vue';
 
 @Component({
-    middleware () {
-        // const localePath = app.localePath('index');
-        // console.log(app.localePath({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
-        // console.log(app.localeRoute({ name: 'category-slug', params: { slug: 1 } }, 'ko'))
-        // console.log('app.localeRoute', app.localeRoute());
-
-        // const switchLocalePath = app.switchLocalePath('ko');
-        // console.log('switchLocalePath', switchLocalePath)
-        // redirect(switchLocalePath)
-    }
+    components: {Navigation}
 })
 export default class Index extends Vue {
-    // protected asyncData({app}) {
-    //   app.switchLocalePath('ko');
-    // }
-
-    protected callRouterPush () {
-        // this.$routerPush({name: 'category-slug', params: {slug: 1}}, 'ko');
-
-        // this.$router.push(this.localePath({name: 'category-slug', params: {slug: 1}}, 'ko'), () => {
-        //     console.log('onComplete');
-        // })
-        this.$routerReplace([{name: 'category-slug', params: {slug: '1'}}, 'ko'], () => {
-            console.log('onComplete');
-        });
-    }
-
-    protected mounted () {
-    }
 }
 </script>
 
