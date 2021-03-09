@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <h1>{{ $t('greet') }}</h1>
+        <h1>TEST{{ $t('greet') }}</h1>
         <Nuxt />
     </div>
 </template>
@@ -9,9 +9,9 @@
 import {Component, Vue} from 'nuxt-property-decorator';
 
 @Component
-export default class Layout extends Vue {
+export default class Test extends Vue {
     protected fetch () {
-        console.log('layout fetch');
+        console.log('test layout fetch');
     }
 
     private head () {

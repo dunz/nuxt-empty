@@ -2,11 +2,16 @@ import {NuxtConfig} from '@nuxt/types';
 import {i18n} from './nuxt-configs';
 
 const config: NuxtConfig = {
+    render: {
+        bundleRenderer: {
+            runInNewContext: false
+        }
+    },
     /*
     ** Nuxt rendering mode
     ** See https://nuxtjs.org/api/configuration-mode
     */
-    mode: 'universal',
+    mode: 'spa',
     /*
     ** Nuxt target
     ** See https://nuxtjs.org/api/configuration-target
@@ -85,7 +90,13 @@ const config: NuxtConfig = {
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
     */
-    build: {}
+    build: {},
+    // messages: {
+    //     server_error: 'Oh no! Server error',
+    //     nuxtjs: 'Is this Nuxt.js?',
+    //     back_to_home: 'Cmon, back home!',
+    //     server_error_details: 'Uh uh :| Server errorrrrr',
+    // }
 };
 
 export default config;

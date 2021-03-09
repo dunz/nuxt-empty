@@ -14,7 +14,6 @@ export default (context: Context) => {
     // console.log('redirect plugin');
     // redirect('/en');
 
-    console.log('client plugin 몇번 실행될까?', context.app.i18n.locale);
     // router.afterEach(() => {
     // return redirect('/en');
 
